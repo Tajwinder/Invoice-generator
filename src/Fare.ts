@@ -1,15 +1,26 @@
-const bookingCharges=5,
-farePerKM=10,
-farePerMinute=1;
+
+const Fare={
+    standard: {
+        bookingCharges:5,
+        farePerKM:10,
+        farePerMinute:1
+    },
+    premium: {
+        bookingCharges:5,
+        farePerKM:15,
+        farePerMinute:2
+    }
+}
+
+
 
 export interface Ride {
     distance:number,
-    time: number
+    time: number, 
+    type:"standard" | "premium"
 }
 export const calculateFare = (ride :Ride ) => {
-let fare=bookingCharges;
-   if(ride.distance>0 || ride.time>0 ){
-       fare=fare+ride.distance*farePerKM+ride.time*farePerMinute;
-   }
-   return fare;
+const {distance, time, type}=ride
+   
+      return distance*Fare[type].farePerKM+time*Fare[type].farePerMinute+Fare[type].bookingCharges;
 }
