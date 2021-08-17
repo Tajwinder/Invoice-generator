@@ -17,6 +17,12 @@ describe("calculateFare Test", () => {
         expect(result).toEqual(175);
  
     })
+    it("should return correct fare for a premium ride", ()=>{
+        const result = calculateFare({distance:10, time:10, type:"premium"});
+        expect(result).toEqual(170);
+ 
+    })
+
 
 
     
